@@ -1,0 +1,285 @@
+.comment{
+  th {
+    text-align: center;
+
+    &.w50 {
+      width: 50px;
+    }
+
+    &.w400 {
+      width: 400px;
+    }
+
+    &.left {
+      text-align: left;
+    }
+  }
+
+  td {
+    text-align: center;
+
+    &.left {
+      text-align: left;
+    }
+  }
+}
+
+.commentsList {
+  h2 {
+    font-family: 'verdana';
+    font-size: 20px;
+    color: #000;
+    margin: 15px 0px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #dfdfdf;
+  }
+
+  .itemComment {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .answer {
+      display: inline-block;
+      margin: 0px 0px 0px 5px;
+      color: #337ab7;
+      border-bottom: 1px dotted;
+      font-size: 0.9em;
+      cursor: pointer;
+    }
+
+    .user {
+      width: 60px;
+      height: 60px;
+      border: 1px solid #d0d0d0;
+      flex: 0 0 60px;
+      margin-right: 20px;
+      border-radius: 50%;
+      overflow: hidden;
+      align-items: center;
+      display: flex;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    .message {
+      display: flex;
+      width: 100%;
+      margin-top: 5px;
+      flex-flow: column wrap;
+      flex: 1 0;
+
+      .systemCommnet {
+        display: flex;
+        width: 100%;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        .authorInfo {
+          b{
+            margin: 0 10px 0 0;
+          }
+        }
+      }
+
+      .icon {
+
+        cursor: pointer;
+
+        &.like {
+          color: green;
+          font-size: 16px;
+          margin-right: 10px;
+
+
+        }
+
+        &.dislike {
+          color: red;
+          font-size: 16px;
+        }
+
+        span {
+          font-style: normal;
+          font-size: 13px;
+          position: relative;
+          top: -2px;
+          margin-left: 5px;
+        }
+      }
+
+      .post {
+        margin-top: 5px;
+        span.answer {
+          color: #0988c5;
+          border-bottom: 1px dashed;
+          font-style: italic;
+          font-size: 1.0em;
+          margin: 0px;
+          cursor: default;
+          font-weight: bold;
+        }
+      }
+
+    }
+
+    form{
+      flex: 1 0 100%;
+      .addCommentForm {
+        background: #eee;
+        padding: 20px 0;
+        float: left;
+        width: 100%;
+        margin: 0px;
+        margin-top: 20px;
+
+        .fieldForm {
+          textarea {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            max-width: 100%;
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+            text-align: left;
+            resize: none;
+            outline: 0;
+            border: 0px;
+            width: 100%;
+            padding: 10px;
+          }
+        }
+
+        .fieldButton {
+          text-align: right;
+          input {
+            padding: 10px 15px;
+            text-align: center;
+            background: #337ab7;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            &:hover{
+              background: #286090;
+            }
+
+            &[type="button"] {
+              background: red;
+              &:hover{
+                background: #f54747;
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    &.child {
+      margin-left: 70px;
+    }
+
+  }
+
+
+  #topComments {
+    //border: 1px solid green;
+    //padding: 20px;
+    //margin-bottom: 20px;
+  }
+
+  #allComments {
+    .showAllComments {
+      margin: 20px 0px;
+      padding: 10px 5px;
+      text-align: center;
+      background: #337ab7;
+      color: #fff;
+      cursor: pointer;
+      &:hover {
+        background: #286090;
+      }
+    }
+
+    .showAllChild{
+      display: inline-block;
+      padding: 5px 15px;
+      background: #eaeaea;
+      margin: 0 0 20px 71px;
+      cursor: pointer;
+      &:hover{
+        background: #e5e5e5;
+      }
+    }
+  }
+
+  .topComment {
+    border-bottom: 1px solid green;
+    padding: 0px;
+    margin-bottom: 20px;
+
+    .best{
+      position: relative;
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 30px;
+        height: 36px;
+        background: url(../images/best.svg);
+        position: absolute;
+        right: 0px;
+        bottom: -10px;
+      }
+    }
+  }
+
+  .messageComment {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    background: #585858;
+    width: 100%;
+    padding: 10px;
+    z-index: 5;
+    text-align: center;
+    color: #fff;
+    &.hide {
+      display: none;
+    }
+  }
+}
+
+/********************  Preloader Demo-2 *******************/
+.preloader2{height:60px;width:60px;margin:0 auto;animation:loader-container 10s linear infinite}
+.preloader2>div{width:24px;height:24px;box-shadow:0 0 8px -2px rgba(0,0,0,.3);position:absolute;animation-duration:1.5s;animation-timing-function:ease-in-out;animation-iteration-count:infinite}
+.preloader2 .box1{background:linear-gradient(-45deg,red,#d60c0c);transform-origin:bottom center;top:4px;left:4px;animation-name:box1}
+.preloader2 .box2{background:linear-gradient(-45deg,#15c109,#29870d);transform-origin:center left;top:4px;right:4px;animation-name:box2}
+.preloader2 .box3{background:linear-gradient(-45deg,#c300ff,#a808a8);transform-origin:top center;bottom:4px;right:4px;animation-name:box3}
+.preloader2 .box4{background:linear-gradient(-45deg,#fc8e28,#ea7e0b);transform-origin:center right;bottom:4px;left:4px;animation-name:box4}
+@keyframes loader-container{
+  0%,23%{transform:rotate(0)}
+  25%,48%{transform:rotate(90deg)}
+  50%,73%{transform:rotate(180deg)}
+  75%,98%{transform:rotate(270deg)}
+  100%{transform:rotate(360deg)}
+}
+@keyframes box1{
+  0%,100%,99%{transform:perspective(200px) rotateX(90deg)}
+  11%,88%{transform:perspective(200px) rotateX(0)}
+}
+@keyframes box2{
+  0%,100%,11%,88%{transform:perspective(200px) rotateY(90deg)}
+  22%,77%{transform:perspective(200px) rotateY(0)}
+}
+@keyframes box3{
+  0%,100%,22%,77%{transform:perspective(200px) rotateX(-90deg)}
+  33%,66%{transform:perspective(200px) rotateX(0)}
+}
+@keyframes box4{
+  0%,100%,33%,66%{transform:perspective(200px) rotateY(-90deg)}
+  44%,55%{transform:perspective(200px) rotateY(0)}
+}
