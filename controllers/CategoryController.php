@@ -16,13 +16,13 @@ use oboom\news\models\Seo;
 use oboom\news\models\NewsCategory;
 
 
-class ItemsController extends Controller
+class CategoryController extends Controller
 {
     public function actionIndex($cat=null)
     {
         \yii\helpers\Url::remember();
 
-        $query = News::find()->all();
+        $query = NewsCategory::find()->all();
         $provider = new ArrayDataProvider([
 
             'allModels'=>$query,
@@ -34,10 +34,6 @@ class ItemsController extends Controller
                     'created_at' =>[
                         'label' => Yii::t('oboom.news', 'CreatedAt'),
                     ],
-
-                    'category_id' =>[
-                        'label' => Yii::t('oboom.news', 'Category'),
-                    ]
                 ],
                 'defaultOrder' => [ 'created_at'=> SORT_DESC]
             ],
@@ -55,31 +51,56 @@ class ItemsController extends Controller
     {
         \yii\helpers\Url::remember();
 
-        $news = new News();
+        $cat = new NewsCategory();
         $seo = new Seo();
-        $category = NewsCategory::find()->all();
 
-        if($news->load(Yii::$app->request->post()) && $news->load(Yii::$app->request->post())){
-            $seo->save();
-            $news->created_by = Yii::$app->user->getId();
-            $news->seo_id = $seo->id;
-            if($news->save()) return $this->goBack();
+        if($cat->load(Yii::$app->request->post()) && $seo->load(Yii::$app->request->post())){
+
+            $transaction = \Yii::$app->db->beginTransaction();
+            try {
+                if(!$seo->save())  $transaction->rollBack();
+                $cat->seo_id = $seo->id;
+
+                if($flag=$cat->save(false)) {
+                    $transaction->commit();
+
+                    return $this->goBack();
+                }
+
+                $transaction->rollBack();
+
+            }catch (Exception $e) {
+                $transaction->rollBack();
+            }
         }
 
 
-        return $this->render('create',['items'=>$news,'seo'=>$seo, 'category'=>$category]);
+        return $this->render('create',['items'=>$cat,'seo'=>$seo]);
     }
 
     public function actionUpdate($id=null)
     {
 
-        $news = News::findOne($id);
-        $category = NewsCategory::find()->all();
+        $news = NewsCategory::findOne($id);
+
         if($news->load(Yii::$app->request->post()) && $news->seo->load(Yii::$app->request->post())) {
-            if($news->save() && $news->seo->save())
-            return $this->goBack();
+            $transaction = \Yii::$app->db->beginTransaction();
+            try {
+                if($news->save() && $news->seo->save()){
+                    $transaction->commit();
+                    return $this->goBack();
+                }
+
+                $transaction->rollBack();
+
+            }catch (Exception $e) {
+                $transaction->rollBack();
+            }
+
+
+
         }
-        return $this->render('update', ['items'=>$news,'seo'=>$news->seo, 'category'=>$category]);
+        return $this->render('update', ['items'=>$news,'seo'=>$news->seo]);
 
     }
 

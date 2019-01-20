@@ -3,6 +3,7 @@
 namespace oboom\news\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "news".
@@ -35,7 +36,7 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content', 'created_by'], 'required'],
+            [['title', 'content', 'created_by','seo_id'], 'required'],
             [['content'], 'string'],
             [['created_by', 'status', 'created_at', 'updated_at', 'category_id'], 'integer'],
             [['title'], 'string', 'max' => 200],
@@ -51,22 +52,46 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'preview' => 'Preview',
-            'content' => 'Content',
-            'created_by' => 'Created By',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'category_id' => 'Category ID',
+            'title' => Yii::t('oboom.news', 'Title'),
+            'preview' => Yii::t('oboom.news', 'Preview'),
+            'content' => Yii::t('oboom.news', 'Desc'),
+            'created_by' => Yii::t('oboom.news', 'CreatedBy'),
+            'status' => Yii::t('oboom.news', 'Status'),
+            'created_at' => Yii::t('oboom.news', 'CreatedAt'),
+            'updated_at' => Yii::t('oboom.news', 'UpdatedAt'),
+            'category_id' => Yii::t('oboom.news', 'Category'),
         ];
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
+    public function behaviors()
+    {
+
+        return [
+            TimestampBehavior::className(),
+            [
+                'class' => 'oboom\gallery\behaviors\AttachGallery',
+                'mainPathUpload'=>Yii::$app->params['uploadPath'].'/uploads',
+                'mode'=>'single',
+                'type' => 'news',
+            ],
+        ];
+    }
+
+
     public function getCategory()
     {
         return $this->hasOne(NewsCategory::className(), ['id' => 'category_id']);
+    }
+
+    public function getAuthor()
+    {
+        return $this->hasOne(Yii::$app->getModule('comments')->userIdentityClass, ['id' => 'created_by']);
+
+    }
+
+    public function getSeo()
+    {
+        return $this->hasOne(Seo::className(), ['id' => 'seo_id']);
+
     }
 }

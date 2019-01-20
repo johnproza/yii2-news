@@ -10,7 +10,7 @@ use yii\helpers\ArrayHelper;
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Tabs;
 use oboom\gallery\widgets\GalleryWidgets;
-$this->title = Yii::t('oboom.news', 'update');
+$this->title = Yii::t('oboom.news', 'create');
 
 ?>
 <div class="mainSection catalog">

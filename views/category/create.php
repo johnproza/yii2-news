@@ -10,7 +10,7 @@ use yii\helpers\ArrayHelper;
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Tabs;
 use oboom\gallery\widgets\GalleryWidgets;
-$this->title = Yii::t('oboom.news', 'update');
+$this->title = Yii::t('oboom.news', 'create');
 
 ?>
 <div class="mainSection catalog">
@@ -28,20 +28,10 @@ $this->title = Yii::t('oboom.news', 'update');
         'items' => [
             [
                 'label' => 'Описание',
-                'content' =>  $this->render('form/items', ['items' => $items, 'form'=> $form, 'category'=>$category]),
+                'content' =>  $this->render('form/items', ['items' => $items, 'form'=> $form]),
                 'active' => true
             ],
-            [
-                'label' => 'Логотип',
-                'content' => GalleryWidgets::widget([
-                    'model'=>$items,
-                    'type'=>'logo',
-                    'params'=>[
-                        'type'=>'addSingle',
-                        'className'=>'avator-img'
-                    ],
-                ])
-            ],
+
             [
                 'label' => 'SEO',
                 'content' => $this->render('form/seo', ['seo' => $seo, 'form'=> $form]),

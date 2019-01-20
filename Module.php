@@ -1,6 +1,6 @@
 <?php
 
-namespace oboom\comments;
+namespace oboom\news;
 
 use Yii;
 use yii\helpers\Inflector;
