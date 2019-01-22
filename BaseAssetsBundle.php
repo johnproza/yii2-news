@@ -6,7 +6,7 @@
  * Time: 13:20
  */
 
-namespace oboom\comments;
+namespace oboom\news;
 use yii\web\AssetBundle;
 
 class BaseAssetsBundle extends AssetBundle

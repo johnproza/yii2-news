@@ -29,7 +29,7 @@ use oboom\gallery\widgets\GalleryWidgets;
     </div>
 
     <div class="col-md-12">
-        <table class="table comment">
+        <table class="table newsTable">
             <thead>
             <tr>
                 <th class="w50">#</th>

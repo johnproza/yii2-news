@@ -73,6 +73,10 @@ class News extends \yii\db\ActiveRecord
                 'mainPathUpload'=>Yii::$app->params['uploadPath'].'/uploads',
                 'mode'=>'single',
                 'type' => 'news',
+                'thumbSize'=>[
+                    'x'=>640,
+                    'y'=>480
+                ]
             ],
         ];
     }
@@ -93,5 +97,9 @@ class News extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Seo::className(), ['id' => 'seo_id']);
 
+    }
+
+    public static function getNewsData($id,$limit){
+        return News::find()->where(['category_id'=>$id,'status'=>1])->limit($limit)->all();
     }
 }

@@ -7,72 +7,42 @@
  */
 
 use yii\helpers\Url;
-use oboom\comments\BaseAssetsBundle;
-use yii\data\ActiveDataProvider;
+use oboom\news\BaseAssetsBundle;
+use oboom\gallery\widgets\GalleryWidgets;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
 use yii\helpers\Html;
-
 BaseAssetsBundle::register($this);
+$c=-1;
 ?>
 
-<div class="row commentsList">
-    <div class="col-md-12">
-        <h2><?=Yii::t('oboom.comments', 'сomments');?></h2>
-        <?if (!is_null($top)): ?>
-            <div class="topComment">
-                <?if( $top['parent']->id != $top['top']->id) :?>
-                    <div class="parent" data-id="<?=$top['parent']->id;?>">
-                        <?=$this->render('_item',['item'=>$top['parent'],'className'=>'parent']);?>
-                        <div class="children best">
-                            <?=$this->render('_item',['item'=>$top['top'],'className'=>'child']);?>
-                        </div>
+<section class="row news">
+    <?if(!empty($data)):?>
+        <?foreach ($data as $item) :?>
+            <?++$c;?>
+            <div class="col-md-6 item">
+                <div class="<?=$c<$topItem ? "col-md-12" : "col-md-12" ?> ">
+                    <div class="title"><a href="#"><?=$item->title;?></a></div>
+                    <div class="newsSystem">
+                        <?=Yii::$app->formatter->asDatetime($item->created_at, 'yyyy-MM-dd HH:mm');?>
                     </div>
-                <?else:?>
-                    <div class="parent best" data-id="<?=$item['parent']->id;?>">
-                        <?=$this->render('_item',['item'=>$item['parent'],'className'=>'parent']);?>
-                        <i class="icon dislike ion-md-thumbs-down" data-type="false"></i>
+                </div>
+                <div class="<?=$c<$topItem ? "col-md-12" : "col-md-4" ?> image">
+                    <?= GalleryWidgets::widget([
+                        'model'=>$item,
+                        'type'=>'news',
+                        'params'=>[
+                            'type'=>'showSingle',
+                            'className'=>'image'
+                        ],
+                    ]); ?>
+                </div>
+                <div class="<?=$c<$topItem ? "col-md-12" : "col-md-8" ?>">
+                    <div class="newsPreview">
+                        <?=substr($item->preview,0,250);?>
                     </div>
-                <?endif;?>
+                </div>
             </div>
-        <?endif;?>
-
-        <div id="back-render">
-            <?if (!is_null($items)): ?>
-                <?foreach ($items as $item):?>
-                    <?if(count($item['child'])>0) :?>
-                        <div class="parent" data-id="<?=$item['parent']->id;?>">
-                            <?=$this->render('_item',['item'=>$item['parent'],'className'=>'parent']);?>
-                            <div class="children">
-                                <?foreach ($item['child'] as $child):?>
-                                    <?=$this->render('_item',['item'=>$child,'className'=>'child']);?>
-                                <?endforeach;?>
-                            </div>
-                        </div>
-                    <?else:?>
-                        <div class="parent" data-id="<?=$item['parent']->id;?>">
-                            <?=$this->render('_item',['item'=>$item['parent'],'className'=>'parent']);?>
-                        </div>
-                    <?endif;?>
-                <?endforeach;?>
-            <?endif;?>
-        </div>
-    </div>
-
-
-
-    <div class="col-md-12">
-        <?php if (Yii::$app->user->isGuest) : ?>
-            <p><?=Yii::t('oboom.comments', 'auth');?></p>
-        <?php endif; ?>
-    </div>
-
-    <div class="col-md-12">
-        <?php if (!Yii::$app->user->isGuest) : ?>
-            <?php echo $this->render('_form', [
-                'model' => $model,
-                'encryptedEntity' => $encryptedEntity,
-            ]); ?>
-        <?php endif; ?>
-    </div>
-</div>
+        <?endforeach?>
+    <?endif;?>
+</section>
