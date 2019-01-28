@@ -7,10 +7,10 @@
  */
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use oboom\comments\BackEndAssetsBundle;
+use oboom\news\BaseAssetsBundle;
 use yii\widgets\LinkPager;
 $this->title = \Yii::t('oboom.comments', 'title');
-BackEndAssetsBundle::register($this);
+BaseAssetsBundle::register($this);
 use oboom\gallery\widgets\GalleryWidgets;
 ?>
 <div id="app" class="mainSection list">
@@ -29,8 +29,8 @@ use oboom\gallery\widgets\GalleryWidgets;
         </div>
     </div>
 
-    <div class="col-md-12">
-        <table class="table newsTable">
+    <div class="col-md-12 table-responsive">
+        <table class="table table-bordered table-hover newsTable">
             <thead>
             <tr>
                 <th class="w50">#</th>

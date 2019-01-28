@@ -13,7 +13,6 @@ class Module extends \yii\base\Module
      */
     public $defaultRoute = 'items';
     public $userIdentityClass;
-    public $commentModelClass = 'oboom\news\models\Comments';
     public $controllerNamespace = 'oboom\news\controllers';
     public $mainLayout = '@oboom/news/views/layouts/main.php';
 

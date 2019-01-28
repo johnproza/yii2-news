@@ -22,9 +22,13 @@ $c=-1;
             <?++$c;?>
             <div class="col-md-6 item">
                 <div class="<?=$c<$topItem ? "col-md-12" : "col-md-12" ?> ">
-                    <div class="title"><a href="#"><?=$item->title;?></a></div>
+                    <div class="title">
+                        <?= Html::a($item->title, "/news/{$item->category->seo->url}/{$item->seo->url}") ?>
+                    </div>
                     <div class="newsSystem">
                         <?=Yii::$app->formatter->asDatetime($item->created_at, 'yyyy-MM-dd HH:mm');?>
+                        <span class="views"><?=$item->views;?> <i class="icon ion-md-eye iconBase"></i></span>
+                        <span class="comments"><?=$item->countComments;?> <i class="icon ion-md-chatboxes iconBase"></i></span>
                     </div>
                 </div>
                 <div class="<?=$c<$topItem ? "col-md-12" : "col-md-4" ?> image">

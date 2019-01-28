@@ -36,4 +36,9 @@ use \yii\helpers\Html;
             ->radioList([1 => 'Опубликовано',
                          0 => 'Не опубликовано'])?>
     </div>
+    <div class="col-lg-12 col-md-12">
+        <?= $form->field($items, 'comments')
+            ->radioList([1 => 'Показывать',
+                0 => 'Не показывать'])?>
+    </div>
 </div>

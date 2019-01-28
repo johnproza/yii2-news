@@ -5,12 +5,17 @@ return [
     'Desc'=>'Описание',
     'CreatedBy'=>'Создано пользователем',
     'Status'=>'Статус',
+    'Comments'=>'Комментарии',
     'CreatedAt'=>'Дата создания',
     'UpdatedAt'=>'Дата одновления',
     'Category'=>'Категория',
+    'Views'=>'Просмотров',
 
     'activeStatus'=>'Активно',
     'blockedStatus'=>'Заблокировано',
+    'CommentsStatusA'=>'Аквтины',
+    'CommentsStatusB'=>'Не активны',
+
 
     'Remove' => 'Хотите удалить запись?',
     'Create' => 'Создать запись',

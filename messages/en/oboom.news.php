@@ -6,11 +6,16 @@ return [
     'CreatedBy'=>'Created By',
     'Status'=>'Status',
     'CreatedAt'=>'Create date',
+    'Comments'=>'Comments',
     'UpdatedAt'=>'Update date',
     'Category'=>'Category',
+    'Views'=>'Views',
 
     'activeStatus'=>'Active',
     'blockedStatus'=>'Blocked',
+    'CommentsStatusA'=>'Active',
+    'CommentsStatusB'=>'Not Active',
+
 
     'Remove' => 'Do you want to remove item?',
     'Create' => 'Create item',

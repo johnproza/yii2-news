@@ -16,6 +16,9 @@
 .newsTable td.left {
   text-align: left;
 }
+.newsTable td img {
+  width: 150px;
+}
 .news .item {
   margin-bottom: 20px;
 }
@@ -31,8 +34,32 @@
 }
 .news .item .newsSystem {
   color: #7c7c7c;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
   font-size: 0.85em;
+  width: 100%;
+}
+.news .item .newsSystem .views {
+  background: #eaeaea;
+  padding: 2px 10px;
+  margin-left: 5px;
+  border-radius: 2px;
+  color: #4a4a4a;
+  font-weight: bold;
+}
+.news .item .newsSystem .views i {
+  margin-left: 5px;
+}
+.news .item .newsSystem .comments {
+  background: #f6f267;
+  padding: 2px 10px;
+  margin-left: 5px;
+  border-radius: 2px;
+  color: #4a4a4a;
+  font-weight: bold;
+}
+.news .item .newsSystem .comments i {
+  margin-left: 5px;
 }
 .news .item .image {
   overflow: hidden;
@@ -43,7 +70,63 @@
   max-width: 100%;
   max-height: 100%;
 }
-.news .item .newsPreview {
+.news.newsItem .title {
+  position: relative;
+  margin-bottom: 20px;
+}
+.news.newsItem .title h1 {
+  margin: 0px 0px 20px 0px;
+  position: absolute;
+  width: 100%;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 20%;
+  text-align: center;
+  color: #fff;
+}
+.news.newsItem .title .image {
+  width: 100%;
+}
+.news.newsItem .title .newsSystem {
+  color: #7c7c7c;
+  font-size: 0.85em;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 15px 20px;
+  color: #fff;
+}
+.news.newsItem .title .newsSystem .views {
+  background: #eaeaea;
+  padding: 2px 10px;
+  margin-left: 5px;
+  border-radius: 2px;
+  color: #4a4a4a;
+  font-weight: bold;
+}
+.news.newsItem .title .newsSystem .views i {
+  margin-left: 5px;
+}
+.news.newsItem .title .newsSystem .comments {
+  background: #f6f267;
+  padding: 2px 10px;
+  margin-left: 5px;
+  border-radius: 2px;
+  color: #4a4a4a;
+  font-weight: bold;
+}
+.news.newsItem .title .newsSystem .comments i {
+  margin-left: 5px;
+}
+.news.newsItem .content {
+  padding: 20px;
+}
+.news.newsItem .newsPreview {
   margin: 20px 0;
+}
+.form {
+  background: #fff;
+  padding: 20px;
+  margin: 0px 20px;
 }
 /*# sourceMappingURL=style.css.map */

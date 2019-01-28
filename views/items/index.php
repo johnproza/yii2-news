@@ -7,10 +7,10 @@
  */
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use oboom\comments\BackEndAssetsBundle;
+use oboom\news\BaseAssetsBundle;
 use yii\widgets\LinkPager;
 $this->title = \Yii::t('oboom.comments', 'title');
-BackEndAssetsBundle::register($this);
+BaseAssetsBundle::register($this);
 use oboom\gallery\widgets\GalleryWidgets;
 ?>
 <div id="app" class="mainSection list">
@@ -28,27 +28,29 @@ use oboom\gallery\widgets\GalleryWidgets;
         </div>
     </div>
 
-    <div class="col-md-12">
-        <table class="table newsTable">
+    <div class="col-md-12 table-responsive">
+        <table class="table table-bordered table-hover newsTable">
             <thead>
             <tr>
-                <th class="w50">#</th>
-                <th class="w50"><?=\Yii::t('oboom.news', 'Title');?></th>
-                <th class="w400 left"><?=\Yii::t('oboom.news', 'Preview');?></th>
-                <th><?=$sort->link('created_at')?></th>
-                <th><?=\Yii::t('oboom.news', 'UpdatedAt');?></th>
-                <th><?=\Yii::t('oboom.news', 'CreatedBy');?></th>
-                <th><?=$sort->link('category_id');?></th>
-                <th><?=\Yii::t('oboom.news', 'Status');?></th>
-                <th></th>
+                <th scope="col" class="w50">#</th>
+                <th scope="col" class="w50"><?=\Yii::t('oboom.news', 'Title');?></th>
+                <th scope="col" class="w400 left"><?=\Yii::t('oboom.news', 'Preview');?></th>
+                <th scope="col" ><?=$sort->link('created_at')?></th>
+                <th scope="col"><?=\Yii::t('oboom.news', 'UpdatedAt');?></th>
+                <th scope="col"><?=\Yii::t('oboom.news', 'CreatedBy');?></th>
+                <th scope="col"><?=$sort->link('category_id');?></th>
+                <th scope="col"><?=\Yii::t('oboom.news', 'Views');?></th>
+                <th scope="col"><?=\Yii::t('oboom.news', 'Comments');?></th>
+                <th scope="col"><?=\Yii::t('oboom.news', 'Status');?></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <?foreach ($items as $item) :?>
                 <tr data-id="<?=$item-id;?>">
-                    <td>
+                    <th scope="row">
                         <?=$item->id;?>
-                    </td>
+                    </th>
                     <td>
                         <?= GalleryWidgets::widget([
                             'model'=>$item,
@@ -76,12 +78,22 @@ use oboom\gallery\widgets\GalleryWidgets;
                     <td>
                         <?=$item->category->title;?>
                     </td>
+                    <td>
+                        <?=$item->views;?>
+                    </td>
 
                     <td class="centerItems">
+                        <?if($item->comments==1):?>
+                            <span class="badge badge-success"><?=\Yii::t('oboom.news', 'CommentsStatusA');?></span>
+                        <?elseif($item->comments==0) :?>
+                            <span class="badge badge-danger"><?=\Yii::t('oboom.news', 'CommentsStatusB');?></span>
+                        <?endif;?>
+                    </td>
+                    <td class="centerItems">
                         <?if($item->status==1):?>
-                            <span class="badge badge-success"><?=\Yii::t('oboom.comments', 'activeStatus');?></span>
+                            <span class="badge badge-success"><?=\Yii::t('oboom.news', 'activeStatus');?></span>
                         <?elseif($item->status==0) :?>
-                            <span class="badge badge-danger"><?=\Yii::t('oboom.comments', 'blockedStatus');?></span>
+                            <span class="badge badge-danger"><?=\Yii::t('oboom.news', 'blockedStatus');?></span>
                         <?endif;?>
                     </td>
                     <td class="center">
