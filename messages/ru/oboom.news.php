@@ -21,6 +21,6 @@ return [
     'Create' => 'Создать запись',
 
     'dataError' => 'failed to get comments. Please, try latter',
-    'commentAdd' => 'Success. Your comment is awaiting moderation',
-    'commentNotAdd' => 'Failed. Your comment could not be posted'
+    'commentAdd' => 'Success. Your gallery is awaiting moderation',
+    'commentNotAdd' => 'Failed. Your gallery could not be posted'
 ];

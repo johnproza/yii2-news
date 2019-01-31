@@ -6,11 +6,12 @@
  * Time: 19:32
  */
 use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
+use oboom\news\BaseAssetsBundle;
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Tabs;
 use oboom\gallery\widgets\GalleryWidgets;
 $this->title = Yii::t('oboom.news', 'create');
+BaseAssetsBundle::register($this);
 
 ?>
 <div class="mainSection catalog">
@@ -32,13 +33,14 @@ $this->title = Yii::t('oboom.news', 'create');
                 'active' => true
             ],
             [
-                'label' => 'Логотип',
+                'label' => 'Фото',
                 'content' => GalleryWidgets::widget([
                     'model'=>$items,
-                    'type'=>'logo',
+                    'type'=>'news',
+                    'max'=>5,
                     'params'=>[
-                        'type'=>'addSingle',
-                        'className'=>'avator-img'
+                        'type'=>'single',
+                        'className'=>'foto'
                     ],
                 ])
             ],

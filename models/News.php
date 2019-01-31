@@ -75,10 +75,10 @@ class News extends \yii\db\ActiveRecord
             [
                 'class' => 'oboom\gallery\behaviors\AttachGallery',
                 'mainPathUpload'=>Yii::$app->params['uploadPath'].'/uploads',
-                'mode'=>'single',
+                'mode'=>'multiple',
                 'type' => 'news',
                 'thumbSize'=>[
-                    'x'=>640,
+                    'x'=>600,
                     'y'=>480
                 ]
             ],

@@ -9,9 +9,9 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use oboom\news\BaseAssetsBundle;
 use yii\widgets\LinkPager;
+use oboom\gallery\widgets\GalleryWidgets;
 $this->title = \Yii::t('oboom.comments', 'title');
 BaseAssetsBundle::register($this);
-use oboom\gallery\widgets\GalleryWidgets;
 ?>
 <div id="app" class="mainSection list">
     <div class="col-md-12">
