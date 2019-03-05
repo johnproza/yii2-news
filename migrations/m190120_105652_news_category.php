@@ -17,6 +17,7 @@ class m190120_105652_news_category extends Migration
           `id` INT NOT NULL AUTO_INCREMENT,
           `title` VARCHAR(150) NOT NULL,
           `created_at` INT NOT NULL,
+          `seo_id` INT NOT NULL,
           `status` TINYINT(2) NULL DEFAULT 0,
           PRIMARY KEY (`id`))
         ENGINE = InnoDB

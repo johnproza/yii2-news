@@ -9,21 +9,20 @@ use yii\helpers\Html;
 use oboom\news\BaseAssetsBundle;
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Tabs;
+use yii\jui\Sortable;
 use oboom\gallery\widgets\GalleryWidgets;
 $this->title = Yii::t('oboom.news', 'update');
 BaseAssetsBundle::register($this);
 ?>
-<div class="mainSection catalog">
+<div class="mainSection">
     <?php $form = ActiveForm::begin(['id' => 'newsItem',
-        'enableClientValidation' => true,
-        'options' => [
-            'class' => 'form',
-            'enctype' => 'multipart/form-data',
-            'validateOnSubmit' => true,
-        ]
-    ]); ?>
-
-
+            'enableClientValidation' => true,
+            'options' => [
+                'class' => 'form',
+                'enctype' => 'multipart/form-data',
+                'validateOnSubmit' => true,
+            ]
+        ]); ?>
     <?php echo Tabs::widget([
         'items' => [
             [
@@ -39,7 +38,8 @@ BaseAssetsBundle::register($this);
                     'max'=>5,
                     'params'=>[
                         'type'=>'multiple',
-                        'className'=>'foto'
+                        'className'=>'foto',
+                        'aspectRatio'=>[16,9],
                     ],
                 ])
             ],
@@ -55,4 +55,5 @@ BaseAssetsBundle::register($this);
         <?= Html::a('Отмена', Yii::$app->request->referrer, ['class'=>'btn btn-danger']) ?>
     </div>
     <?php ActiveForm::end(); ?>
+
 </div>

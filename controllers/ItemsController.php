@@ -87,7 +87,7 @@ class ItemsController extends Controller
     {
 
         if(Yii::$app->request->isPost && !is_null($id)){
-            $cat = MenuItems::findOne($id);
+            $cat = News::findOne($id);
             if ($cat->delete()) {
                 return $this->goBack();
             }

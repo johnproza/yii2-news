@@ -13,7 +13,7 @@ use oboom\gallery\widgets\GalleryWidgets;
 $this->title = \Yii::t('oboom.comments', 'title');
 BaseAssetsBundle::register($this);
 ?>
-<div id="app" class="mainSection list">
+<div id="app" class="mainSection row">
     <div class="col-md-12">
         <div class="systemBar">
             <?= Html::a(\Yii::t('oboom.news', 'Create'), '/news/items/create', ['class' => 'btn btn-success','data-pjax' => '0']) ?>

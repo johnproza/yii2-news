@@ -13,7 +13,7 @@ use oboom\gallery\widgets\GalleryWidgets;
 $this->title = Yii::t('oboom.news', 'create');
 
 ?>
-<div class="mainSection catalog">
+<div class="mainSection">
     <?php $form = ActiveForm::begin(['id' => 'newsItem',
         'enableClientValidation' => true,
         'options' => [

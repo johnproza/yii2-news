@@ -20,6 +20,7 @@ class DefaultController extends Controller
 
     public function actionIndex($cat=null,$item=null){
         $items = News::getItem($cat,$item);
+        $category = News::getCat($cat);
         if(count($items)==1){
             $items->trigger(News::EVENT_INCREMENT_VIEW);
             return $this->render('item',['data'=>$items]);
@@ -36,8 +37,8 @@ class DefaultController extends Controller
                 //'defaultOrder' => [ 'item.top'=> SORT_DESC , 'id' => SORT_DESC ]
             ],
             'pagination' => [
-                'pageSize' => 15,
-                'forcePageParam' => false,
+                'pageSize' => 20,
+                'forcePageParam' => true,
             ],
 
         ]);
@@ -45,6 +46,7 @@ class DefaultController extends Controller
 
         return $this->render('list',[
             'data'=>$provider->getModels(),
+            'cat'=>$category,
             'pages'=>$provider->pagination]);
 
     }

@@ -14,7 +14,7 @@ $this->title = Yii::t('oboom.news', 'create');
 BaseAssetsBundle::register($this);
 
 ?>
-<div class="mainSection catalog">
+<div class="mainSection">
     <?php $form = ActiveForm::begin(['id' => 'newsItem',
         'enableClientValidation' => true,
         'options' => [
@@ -40,7 +40,8 @@ BaseAssetsBundle::register($this);
                     'max'=>5,
                     'params'=>[
                         'type'=>'single',
-                        'className'=>'foto'
+                        'className'=>'foto',
+                        'aspectRatio'=>[16,9],
                     ],
                 ])
             ],

@@ -142,4 +142,11 @@ class News extends \yii\db\ActiveRecord
         }
     }
 
+    public static function getCat($cat=null){
+        $category = NewsCategory::find()->joinWith('seo')->where(['seo.url'=>$cat])->limit(1)->one();
+        if(!is_null($category)) {
+            return $category;
+        }
+    }
+
 }

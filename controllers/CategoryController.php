@@ -49,7 +49,7 @@ class CategoryController extends Controller
 
     public function actionCreate()
     {
-        \yii\helpers\Url::remember();
+
 
         $cat = new NewsCategory();
         $seo = new Seo();

@@ -25,6 +25,7 @@ class m190120_105701_news extends Migration
               `created_at` INT NULL,
               `updated_at` INT NULL,
               `category_id` INT NULL DEFAULT 0,
+              `seo_id` INT NULL,
               PRIMARY KEY (`id`),
               INDEX `FK_news_category_idx` (`category_id` ASC),
               CONSTRAINT `FK_news_category`
