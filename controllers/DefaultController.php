@@ -21,7 +21,7 @@ class DefaultController extends Controller
     public function actionIndex($cat=null,$item=null){
         $items = News::getItem($cat,$item);
         $category = News::getCat($cat);
-        if(count($items)==1){
+        if(count($items)==1 && !is_null($item)){
             $items->trigger(News::EVENT_INCREMENT_VIEW);
             return $this->render('item',['data'=>$items]);
         }

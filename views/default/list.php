@@ -11,22 +11,24 @@ use yii\widgets\LinkPager;
 <div class="row news newsItem">
     <?foreach ($data as $item) :?>
     <div class="col-md-12">
-        <div class="title">
-            <h1><?=$item->title;?></h1>
-            <?= GalleryWidgets::widget([
-                'model'=>$item,
-                'type'=>'news',
-                'params'=>[
-                    'type'=>'showSingle',
-                    'className'=>'image'
-                ],
-            ]); ?>
-            <div class="newsSystem">
-                <?=Yii::$app->formatter->asDatetime($item->created_at, 'yyyy-MM-dd HH:mm');?>
-                <span class="views"><?=$item->views;?> <i class="icon ion-md-eye iconBase"></i></span>
-                <span class="comments"><?=$item->countComments;?> <i class="icon ion-md-chatboxes iconBase"></i></span>
+        <a href="<?= Html::a($item->title, "/news/{$item->category->seo->url}/{$item->seo->url}") ?>">
+            <div class="title">
+                <h1><?=$item->title;?></h1>
+                <?= GalleryWidgets::widget([
+                    'model'=>$item,
+                    'type'=>'news',
+                    'params'=>[
+                        'type'=>'showSingle',
+                        'className'=>'image'
+                    ],
+                ]); ?>
+                <div class="newsSystem">
+                    <?=Yii::$app->formatter->asDatetime($item->created_at, 'yyyy-MM-dd HH:mm');?>
+                    <span class="views"><?=$item->views;?> <i class="icon ion-md-eye iconBase"></i></span>
+                    <span class="comments"><?=$item->countComments;?> <i class="icon ion-md-chatboxes iconBase"></i></span>
+                </div>
             </div>
-        </div>
+        </a>
         <div class="preview">
             <?=$item->preview;?>
         </div>
