@@ -26,6 +26,12 @@ class DefaultController extends Controller
             return $this->render('item',['data'=>$items]);
         }
 
+
+        foreach ($items as $item) {
+            $item->trigger(News::EVENT_COUNT_VIEWS);
+        }
+
+
         $provider = new ArrayDataProvider([
             'allModels'=>$items,
             'sort' => [
